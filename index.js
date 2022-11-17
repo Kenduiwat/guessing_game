@@ -1,32 +1,29 @@
-let score = 0;
-let range = 2;
-console.log("welcome to Vinnies guessing game");
-console.log("Please enter your name");
-const input = prompt();
-console.log("Welcome to the game", input);
-function random(range) {
-  let randomNumber = Math.floor(Math.random()* range) + 1;
-  return randomNumber
-};
-let randomNum = 1;
-let userNumber = 0;
-do {
-  randomNum = random(range);
-  //console.log(randomNum)
-  console.log("Guess a number between 1 and ", range.toString());
-  userNumber = parseInt(prompt());
-  while (userNumber !== userNumber || userNumber>range){
-    console.log("Please!!! Guess a number between 1 and ", range.toString());
-    userNumber = parseInt(prompt());
-  }
-  if(userNumber === randomNum){
-    console.log("Correct guess, you have gained a point")
-    console.log("moving to stage ", range.toString())
-    range += 1
-    score += 1
-  } else {
-    console.log("Wrong Guess!!!!!")
-    console.log("Your Score is ", score.toString())
-    console.log("Thanks for playing")
-  }
-} while (userNumber === randomNum)
+// prompt user for their username
+const userName = prompt(`What is your name?`)
+
+// welcome user
+alert(`Welcome ${userName}`);
+
+// variables
+let points = 0;
+let level = 1;
+let max = 2;
+
+// game loop
+for (let i = 2; i <= 10; i++) {
+    // Generating Random Number
+    let correctNumber = Math.floor(Math.random() * max) + 1;
+    // Guessed Number
+    let guess = parseInt(prompt(`Enter a number between 1 and ${max}`, ``));
+
+    if (guess === correctNumber) {
+        alert(`Amazing! ${guess} is the correct number!!`)
+        max++;
+        points++;
+    } 
+    else if (guess !== correctNumber) {
+        alert("Wrong Answer! Try Again")
+    }
+}
+
+alert(`The game has ended and you had ${points} points`); 
